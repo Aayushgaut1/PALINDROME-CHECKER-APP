@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Palindromecheckerapp {
 
@@ -7,31 +8,28 @@ public class Palindromecheckerapp {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version : 4.0");
+        System.out.println("Version : 5.0");
         System.out.println("System Initialized Successfully");
         System.out.print("Enter text: ");
 
         String input = scanner.nextLine();
 
-        // Convert string to character array
-        char[] chars = input.toCharArray();
+        // Create stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer initialization
-        int start = 0;
-        int end = chars.length - 1;
+        // Push characters into stack
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
         boolean isPalindrome = true;
 
-        // Compare characters using two-pointer technique
-        while (start < end) {
-
-            if (chars[start] != chars[end]) {
+        // Pop and compare
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
 
         System.out.println("Input : " + input);
