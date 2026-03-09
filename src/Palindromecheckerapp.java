@@ -7,7 +7,7 @@ public class Palindromecheckerapp {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println("Hello World- Modified");
         System.out.println("Welcome to the Palindrome Checker Management System");
         System.out.println("Version : 7.0");
         System.out.println("System Initialized Successfully");
