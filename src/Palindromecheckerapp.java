@@ -11,7 +11,7 @@ public class Palindromecheckerapp {
 
         System.out.println("Hello World - Modified v2");
         System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version : 9.0");
+        System.out.println("Version : 10.0");
         System.out.println("System Initialized Successfully");
 
         System.out.print("Enter text: ");
@@ -83,26 +83,46 @@ public class Palindromecheckerapp {
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindromeUC9);
 
+
+        // ===============================
+        // UC10 : Case-Insensitive & Space-Ignored Palindrome
+        // ===============================
+        System.out.println("\n----- UC10 : Normalized Palindrome Validation -----");
+
+        // Normalize string
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        boolean isPalindromeUC10 = true;
+
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindromeUC10 = false;
+                break;
+            }
+        }
+
+        System.out.println("Input : " + input);
+        System.out.println("Normalized : " + normalized);
+        System.out.println("Is Palindrome? : " + isPalindromeUC10);
+
         scanner.close();
     }
 
 
-    // =====================================
+    // ===============================
     // UC9 Recursive Function
-    // =====================================
+    // ===============================
     private static boolean checkRecursive(String s, int start, int end) {
 
-        // Base condition
         if (start >= end) {
             return true;
         }
 
-        // If characters don't match
         if (s.charAt(start) != s.charAt(end)) {
             return false;
         }
 
-        // Recursive call for inner substring
         return checkRecursive(s, start + 1, end - 1);
     }
 }
