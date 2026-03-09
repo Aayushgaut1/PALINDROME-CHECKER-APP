@@ -11,10 +11,10 @@ public class Palindromecheckerapp {
 
         System.out.println("Hello World - Modified v2");
         System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version : 8.0");
+        System.out.println("Version : 9.0");
         System.out.println("System Initialized Successfully");
-        System.out.print("Enter text: ");
 
+        System.out.print("Enter text: ");
         String input = scanner.nextLine();
 
         // ===============================
@@ -72,6 +72,37 @@ public class Palindromecheckerapp {
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindromeUC8);
 
+
+        // ===============================
+        // UC9 : Recursive Palindrome Checker
+        // ===============================
+        System.out.println("\n----- UC9 : Recursive Palindrome Checker -----");
+
+        boolean isPalindromeUC9 = checkRecursive(input, 0, input.length() - 1);
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindromeUC9);
+
         scanner.close();
+    }
+
+
+    // =====================================
+    // UC9 Recursive Function
+    // =====================================
+    private static boolean checkRecursive(String s, int start, int end) {
+
+        // Base condition
+        if (start >= end) {
+            return true;
+        }
+
+        // If characters don't match
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        // Recursive call for inner substring
+        return checkRecursive(s, start + 1, end - 1);
     }
 }
