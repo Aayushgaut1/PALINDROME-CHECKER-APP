@@ -11,7 +11,7 @@ public class Palindromecheckerapp {
 
         System.out.println("Hello World - Modified v2");
         System.out.println("Welcome to the Palindrome Checker Management System");
-        System.out.println("Version : 10.0");
+        System.out.println("Version : 11.0");
         System.out.println("System Initialized Successfully");
 
         System.out.print("Enter text: ");
@@ -89,7 +89,6 @@ public class Palindromecheckerapp {
         // ===============================
         System.out.println("\n----- UC10 : Normalized Palindrome Validation -----");
 
-        // Normalize string
         String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
         boolean isPalindromeUC10 = true;
@@ -102,9 +101,21 @@ public class Palindromecheckerapp {
             }
         }
 
-        System.out.println("Input : " + input);
         System.out.println("Normalized : " + normalized);
         System.out.println("Is Palindrome? : " + isPalindromeUC10);
+
+
+        // ===============================
+        // UC11 : Object-Oriented Palindrome Service
+        // ===============================
+        System.out.println("\n----- UC11 : Object-Oriented Palindrome Service -----");
+
+        PalindromeChecker checker = new PalindromeChecker();
+
+        boolean result = checker.checkPalindrome(input);
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + result);
 
         scanner.close();
     }
@@ -124,5 +135,32 @@ public class Palindromecheckerapp {
         }
 
         return checkRecursive(s, start + 1, end - 1);
+    }
+}
+
+
+// ========================================
+// UC11 : PalindromeChecker Service Class
+// ========================================
+class PalindromeChecker {
+
+    public boolean checkPalindrome(String input) {
+
+        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+
+        int start = 0;
+        int end = normalized.length() - 1;
+
+        while (start < end) {
+
+            if (normalized.charAt(start) != normalized.charAt(end)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+
+        return true;
     }
 }
